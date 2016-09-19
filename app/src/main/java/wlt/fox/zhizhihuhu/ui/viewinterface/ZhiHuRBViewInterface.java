@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
  * E-mail : autumnsassou@163.com
  */
 public interface ZhiHuRBViewInterface {
+    void setRefresh(boolean requestDataRefresh);
     RecyclerView getRecyclerView();
     LinearLayoutManager getLayoutManager();
 }

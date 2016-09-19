@@ -4,6 +4,16 @@
     <color name="colorPrimaryDark">#538D8C</color>
     <color name="colorAccent">#EB2064</color>
 
+    <!--Text-->
+    <color name="textColor">#424242</color>
+
+    <!--Splash-->
+    <color name="white">#FFFFFF</color>
+    <color name="gery">#FAFAFA</color>
+    <color name="darkgery">#797979</color>
+    <color name="trangery">#512e2e2e</color>
+    <color name="black">#252525</color>
+
     <!--RefreshLayout-->
     <color name="refresh_progress_1">#536DFE</color>
     <color name="refresh_progress_2">#f44336</color>

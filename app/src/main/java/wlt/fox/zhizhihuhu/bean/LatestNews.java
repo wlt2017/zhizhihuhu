@@ -106,6 +106,17 @@ public class LatestNews {
         public void setImages(List<String> images) {
             this.images = images;
         }
+
+        @Override
+        public String toString() {
+            return "Stories{" +
+                    "ga_prefix='" + ga_prefix + '\'' +
+                    ", id=" + id +
+                    ", title='" + title + '\'' +
+                    ", type=" + type +
+                    ", images=" + images +
+                    '}';
+        }
     }
 
     public static class TopStories {
@@ -155,6 +166,16 @@ public class LatestNews {
             this.type = type;
         }
 
+        @Override
+        public String toString() {
+            return "TopStories{" +
+                    "ga_prefix='" + ga_prefix + '\'' +
+                    ", id=" + id +
+                    ", image='" + image + '\'' +
+                    ", title='" + title + '\'' +
+                    ", type=" + type +
+                    '}';
+        }
     }
 
     @Override

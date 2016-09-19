@@ -8,6 +8,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 import wlt.fox.zhizhihuhu.bean.LatestNews;
+import wlt.fox.zhizhihuhu.ui.adapter.ZhihuListAdapter;
 import wlt.fox.zhizhihuhu.ui.base.BasePresentter;
 import wlt.fox.zhizhihuhu.ui.viewinterface.ZhiHuRBViewInterface;
 
@@ -23,6 +24,11 @@ public class ZhihuribaoFgPresenter extends BasePresentter<ZhiHuRBViewInterface> 
 
     private RecyclerView mRecyclerView;
     private LinearLayoutManager layoutManager;
+
+    private LatestNews mLatestNews;
+    //是否加载过更多
+    private boolean isLoadMore = false;
+
 
     public ZhihuribaoFgPresenter(Context context) {
         mContext = context;
@@ -52,7 +58,19 @@ public class ZhihuribaoFgPresenter extends BasePresentter<ZhiHuRBViewInterface> 
         }
     }
 
-    private void displayZhihuList(LatestNews latestNews, Context mContext, ZhiHuRBViewInterface zhiHuRBView, RecyclerView mRecyclerView) {
+    private ZhihuListAdapter adapter;
+    String time;
+    private void displayZhihuList(LatestNews latestNews, Context mContext,
+                                  ZhiHuRBViewInterface zhiHuRBView, RecyclerView mRecyclerView) {
+        if(isLoadMore) {
 
+        } else {
+            mLatestNews = latestNews;
+            adapter = new ZhihuListAdapter(mContext, mLatestNews);
+            mRecyclerView.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
+        }
+        zhiHuRBView.setRefresh(false);
+        time = latestNews.getDate();
     }
 }
