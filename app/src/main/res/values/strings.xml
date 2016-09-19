@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">知之乎乎</string>
+    <string name="net_wrong">网络问题~</string>
 </resources>

@@ -24,7 +24,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import wlt.fox.zhizhihuhu.MyApp;
-import wlt.fox.zhizhihuhu.bean.LatestNews;
+import wlt.fox.zhizhihuhu.bean.zhihu.LatestNews;
 import wlt.fox.zhizhihuhu.util.ScreenUtil;
 
 

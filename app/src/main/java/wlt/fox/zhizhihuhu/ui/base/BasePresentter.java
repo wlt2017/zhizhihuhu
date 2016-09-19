@@ -5,6 +5,8 @@ import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
 
 import wlt.fox.zhizhihuhu.api.ApiFactory;
+import wlt.fox.zhizhihuhu.api.DailyApi;
+import wlt.fox.zhizhihuhu.api.GankApi;
 import wlt.fox.zhizhihuhu.api.ZhihuApi;
 
 /**
@@ -14,7 +16,10 @@ public abstract class BasePresentter<T> {
 
     protected Reference<T> mViewRef;//view接口类型的弱引用
 
-    public final ZhihuApi zhihuApi = ApiFactory.getZhihuApiSingleton();
+    public static final ZhihuApi zhihuApi = ApiFactory.getZhihuApiSingleton();
+    public static final GankApi gankApi = ApiFactory.getGankApiSingleton();
+    public static final DailyApi dailyApi = ApiFactory.getDailyApiSingleton();
+
 
     public void attachView(T view) {
         mViewRef = new WeakReference<T>(view);//建立关联

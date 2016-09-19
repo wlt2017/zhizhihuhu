@@ -60,7 +60,23 @@ public class ApiRetrofit {
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
 
+        Retrofit retrofit_gank = new Retrofit.Builder()
+                .baseUrl(GANK_BASE_URL)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
+
+        Retrofit retrofit_daily= new Retrofit.Builder()
+                .baseUrl(DAILY_BASE_URL)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
+
         ZhihuApiService = retrofit_zhihu.create(ZhihuApi.class);
+        GankApiService = retrofit_gank.create(GankApi.class);
+        DailyApiService = retrofit_daily.create(DailyApi.class);
     }
 
     //cache

@@ -8,12 +8,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import wlt.fox.zhizhihuhu.R;
-import wlt.fox.zhizhihuhu.bean.LatestNews;
+import wlt.fox.zhizhihuhu.bean.zhihu.LatestNews;
 import wlt.fox.zhizhihuhu.util.LogUtils;
 import wlt.fox.zhizhihuhu.view.TopStoriesViewPager;
 
@@ -121,20 +123,22 @@ public class ZhihuListAdapter
 
         public StoriesViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(itemView);
+            ButterKnife.bind(this, itemView);
         }
 
         public void bindItem(LatestNews.Stories stories) {
             LogUtils.d(TAG, stories.getTitle());
-//            tv_stories_title.setText(stories.getTitle());
-//            List<String> images = stories.getImages();
-//            Glide.with(mContext).load(images.get(0)).centerCrop().into(iv_stories_img);
-//            card_stories.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    // TODO: 2016/9/19
-//                }
-//            });
+            if(stories.getTitle() != null) {
+                tv_stories_title.setText(stories.getTitle());
+            }
+            List<String> images = stories.getImages();
+            Glide.with(mContext).load(images.get(0)).centerCrop().into(iv_stories_img);
+            card_stories.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
         }
     }
 

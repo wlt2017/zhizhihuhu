@@ -1,4 +1,4 @@
-package wlt.fox.zhizhihuhu.bean;
+package wlt.fox.zhizhihuhu.bean.zhihu;
 
 import java.util.List;
 

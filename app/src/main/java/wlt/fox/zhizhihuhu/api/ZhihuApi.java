@@ -2,7 +2,7 @@ package wlt.fox.zhizhihuhu.api;
 
 import retrofit2.http.GET;
 import rx.Observable;
-import wlt.fox.zhizhihuhu.bean.LatestNews;
+import wlt.fox.zhizhihuhu.bean.zhihu.LatestNews;
 
 /**
  * Created by wlt on 2016/9/18.

@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
-import wlt.fox.zhizhihuhu.bean.LatestNews;
+import wlt.fox.zhizhihuhu.bean.zhihu.LatestNews;
 import wlt.fox.zhizhihuhu.ui.adapter.ZhihuListAdapter;
 import wlt.fox.zhizhihuhu.ui.base.BasePresentter;
 import wlt.fox.zhizhihuhu.ui.viewinterface.ZhiHuRBViewInterface;
