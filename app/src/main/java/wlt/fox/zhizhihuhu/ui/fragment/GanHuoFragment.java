@@ -12,15 +12,15 @@ import butterknife.ButterKnife;
 import wlt.fox.zhizhihuhu.R;
 import wlt.fox.zhizhihuhu.ui.base.MVPBaseFragment;
 import wlt.fox.zhizhihuhu.ui.presenter.GanhuoFgPresenter;
-import wlt.fox.zhizhihuhu.ui.viewinterface.GanHuoViewInterface;
+import wlt.fox.zhizhihuhu.ui.viewinterface.GanHuoFGViewInterface;
 
 /**
  * Created by wlt on 2016/9/18.
  * E-mail : autumnsassou@163.com
  */
 public class GanHuoFragment
-        extends MVPBaseFragment<GanHuoViewInterface, GanhuoFgPresenter>
-        implements GanHuoViewInterface{
+        extends MVPBaseFragment<GanHuoFGViewInterface, GanhuoFgPresenter>
+        implements GanHuoFGViewInterface {
 
     private GridLayoutManager mGridLayoutManager;
 

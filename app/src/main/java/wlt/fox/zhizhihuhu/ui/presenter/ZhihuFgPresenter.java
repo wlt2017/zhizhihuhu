@@ -10,17 +10,17 @@ import rx.schedulers.Schedulers;
 import wlt.fox.zhizhihuhu.bean.zhihu.LatestNews;
 import wlt.fox.zhizhihuhu.ui.adapter.ZhihuListAdapter;
 import wlt.fox.zhizhihuhu.ui.base.BasePresentter;
-import wlt.fox.zhizhihuhu.ui.viewinterface.ZhiHuRBViewInterface;
+import wlt.fox.zhizhihuhu.ui.viewinterface.ZhiHuFGViewInterface;
 
 /**
  * Created by wlt on 2016/9/18.
  * E-mail : autumnsassou@163.com
  */
-public class ZhihuribaoFgPresenter extends BasePresentter<ZhiHuRBViewInterface> {
+public class ZhihuFgPresenter extends BasePresentter<ZhiHuFGViewInterface> {
 
     private Context mContext;
 
-    private ZhiHuRBViewInterface zhiHuRBView;
+    private ZhiHuFGViewInterface zhiHuRBView;
 
     private RecyclerView mRecyclerView;
     private LinearLayoutManager layoutManager;
@@ -30,7 +30,7 @@ public class ZhihuribaoFgPresenter extends BasePresentter<ZhiHuRBViewInterface> 
     private boolean isLoadMore = false;
 
 
-    public ZhihuribaoFgPresenter(Context context) {
+    public ZhihuFgPresenter(Context context) {
         mContext = context;
     }
 
@@ -61,7 +61,7 @@ public class ZhihuribaoFgPresenter extends BasePresentter<ZhiHuRBViewInterface> 
     private ZhihuListAdapter adapter;
     String time;
     private void displayZhihuList(LatestNews latestNews, Context mContext,
-                                  ZhiHuRBViewInterface zhiHuRBView, RecyclerView mRecyclerView) {
+                                  ZhiHuFGViewInterface zhiHuRBView, RecyclerView mRecyclerView) {
         if(isLoadMore) {
 
         } else {

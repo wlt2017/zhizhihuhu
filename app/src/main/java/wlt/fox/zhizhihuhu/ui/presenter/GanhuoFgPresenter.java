@@ -17,19 +17,19 @@ import wlt.fox.zhizhihuhu.bean.ganhuo.MeiZi;
 import wlt.fox.zhizhihuhu.bean.ganhuo.Video;
 import wlt.fox.zhizhihuhu.ui.adapter.GanhuoListAdapter;
 import wlt.fox.zhizhihuhu.ui.base.BasePresentter;
-import wlt.fox.zhizhihuhu.ui.viewinterface.GanHuoViewInterface;
+import wlt.fox.zhizhihuhu.ui.viewinterface.GanHuoFGViewInterface;
 import wlt.fox.zhizhihuhu.util.LogUtils;
 
 /**
  * Created by wlt on 2016/9/19.
  * E-mail : autumnsassou@163.com
  */
-public class GanhuoFgPresenter extends BasePresentter<GanHuoViewInterface> {
+public class GanhuoFgPresenter extends BasePresentter<GanHuoFGViewInterface> {
 
     private final static String TAG = "GanhuoFgPresenter";
 
     private Context mContext;
-    private GanHuoViewInterface ganhuoFgView;
+    private GanHuoFGViewInterface ganhuoFgView;
     private RecyclerView mRecyclerView;
     private GridLayoutManager layoutManager;
 
@@ -83,7 +83,7 @@ public class GanhuoFgPresenter extends BasePresentter<GanHuoViewInterface> {
     List<MeiZi.Results> list;
     private GanhuoListAdapter adapter;
     private void displayMeizi(Context mContext, List<MeiZi.Results> results,
-                              GanHuoViewInterface ganhuoFgView, RecyclerView mRecyclerView) {
+                              GanHuoFGViewInterface ganhuoFgView, RecyclerView mRecyclerView) {
         if(false) {
 
         } else {

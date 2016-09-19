@@ -13,16 +13,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import wlt.fox.zhizhihuhu.R;
 import wlt.fox.zhizhihuhu.ui.base.MVPBaseFragment;
-import wlt.fox.zhizhihuhu.ui.presenter.ZhihuribaoFgPresenter;
-import wlt.fox.zhizhihuhu.ui.viewinterface.ZhiHuRBViewInterface;
+import wlt.fox.zhizhihuhu.ui.presenter.ZhihuFgPresenter;
+import wlt.fox.zhizhihuhu.ui.viewinterface.ZhiHuFGViewInterface;
 
 /**
  * Created by wlt on 2016/9/18.
  * E-mail : autumnsassou@163.com
  */
 public class ZhiHuRiBaoFragment
-        extends MVPBaseFragment <ZhiHuRBViewInterface,ZhihuribaoFgPresenter>
-        implements ZhiHuRBViewInterface {
+        extends MVPBaseFragment <ZhiHuFGViewInterface,ZhihuFgPresenter>
+        implements ZhiHuFGViewInterface {
 
     private final static String TAG = "ZhiHuRiBaoFragment";
 
@@ -38,8 +38,8 @@ public class ZhiHuRiBaoFragment
     SwipeRefreshLayout swipe_refresh_layout;
 
     @Override
-    protected ZhihuribaoFgPresenter createPresenter() {
-        return new ZhihuribaoFgPresenter(getContext());
+    protected ZhihuFgPresenter createPresenter() {
+        return new ZhihuFgPresenter(getContext());
     }
 
     @Override

@@ -15,7 +15,7 @@ import wlt.fox.zhizhihuhu.ui.base.BasePresentter;
 import wlt.fox.zhizhihuhu.ui.base.MVPBaseActivity;
 import wlt.fox.zhizhihuhu.ui.base.MVPBaseFragment;
 import wlt.fox.zhizhihuhu.ui.fragment.GanHuoFragment;
-import wlt.fox.zhizhihuhu.ui.fragment.ThirdFragment;
+import wlt.fox.zhizhihuhu.ui.fragment.DailyFragment;
 import wlt.fox.zhizhihuhu.ui.fragment.ZhiHuRiBaoFragment;
 
 /**
@@ -49,7 +49,7 @@ public class MainActivity extends MVPBaseActivity {
         fragmentList = new ArrayList<>();
         fragmentList.add(new ZhiHuRiBaoFragment());
         fragmentList.add(new GanHuoFragment());
-        fragmentList.add(new ThirdFragment());
+        fragmentList.add(new DailyFragment());
         content_viewPager.setOffscreenPageLimit(3);
         content_viewPager.setAdapter(new ViewPagerFragmentAdapter(
                 getSupportFragmentManager(), fragmentList));
