@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
  * E-mail : autumnsassou@163.com
  */
 public interface GanHuoFGViewInterface {
+    void setDataRefresh(Boolean refresh);
     GridLayoutManager getLayoutManager();
     RecyclerView getRecyclerView();
 }

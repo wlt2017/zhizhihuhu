@@ -16,7 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import wlt.fox.zhizhihuhu.R;
 import wlt.fox.zhizhihuhu.bean.zhihu.LatestNews;
-import wlt.fox.zhizhihuhu.util.LogUtils;
+import wlt.fox.zhizhihuhu.ui.activity.ZhihuWebActivity;
 import wlt.fox.zhizhihuhu.view.TopStoriesViewPager;
 
 /**
@@ -26,7 +26,7 @@ import wlt.fox.zhizhihuhu.view.TopStoriesViewPager;
 public class ZhihuListAdapter
         extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private final static String TAG = "ZhihuListAdapter";
+    //private final static String TAG = "ZhihuListAdapter";
 
     private Context mContext;
     private LatestNews mLatestNews;
@@ -103,7 +103,8 @@ public class ZhihuListAdapter
             vp_top_stories.init(top_stories, tv_top_title, new TopStoriesViewPager.ViewPagerClickListenner() {
                 @Override
                 public void onClick(LatestNews.TopStories item) {
-                    // TODO: 2016/9/19
+                    mContext.startActivity(
+                            ZhihuWebActivity.newIntent(mContext,item.getId()));
                 }
             });
         }
@@ -126,8 +127,7 @@ public class ZhihuListAdapter
             ButterKnife.bind(this, itemView);
         }
 
-        public void bindItem(LatestNews.Stories stories) {
-            LogUtils.d(TAG, stories.getTitle());
+        public void bindItem(final LatestNews.Stories stories) {
             if(stories.getTitle() != null) {
                 tv_stories_title.setText(stories.getTitle());
             }
@@ -136,7 +136,8 @@ public class ZhihuListAdapter
             card_stories.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    mContext.startActivity(
+                            ZhihuWebActivity.newIntent(mContext,stories.getId()));
                 }
             });
         }
@@ -145,7 +146,6 @@ public class ZhihuListAdapter
     // TODO: 2016/9/19
     @Override
     public int getItemCount() {
-        LogUtils.d(TAG, " "+ (mLatestNews.getStories().size()+1));
         return mLatestNews.getStories().size()+1;
     }
 

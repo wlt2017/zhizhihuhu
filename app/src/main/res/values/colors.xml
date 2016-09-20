@@ -19,4 +19,6 @@
     <color name="refresh_progress_2">#f44336</color>
     <color name="refresh_progress_3">#FF4081</color>
 
+    <color name="顶部进度条">#A199E9</color>
+
 </resources>

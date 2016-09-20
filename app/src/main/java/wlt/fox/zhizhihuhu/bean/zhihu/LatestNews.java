@@ -62,7 +62,7 @@ public class LatestNews {
 
     public static class Stories {
         private String ga_prefix;
-        private int id;
+        private String id;
         private String title;
         private int type;
         private List<String> images;
@@ -75,11 +75,11 @@ public class LatestNews {
             this.ga_prefix = ga_prefix;
         }
 
-        public int getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(String id) {
             this.id = id;
         }
 
@@ -121,10 +121,20 @@ public class LatestNews {
 
     public static class TopStories {
         private String ga_prefix;
-        private int id;
+        private String id;
         private String image;
         private String title;
         private int type;
+
+        private String url;
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
 
         public String getGa_prefix() {
             return ga_prefix;
@@ -134,11 +144,11 @@ public class LatestNews {
             this.ga_prefix = ga_prefix;
         }
 
-        public int getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(String id) {
             this.id = id;
         }
 

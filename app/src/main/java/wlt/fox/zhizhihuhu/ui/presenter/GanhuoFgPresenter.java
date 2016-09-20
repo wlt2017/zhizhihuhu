@@ -26,7 +26,6 @@ import wlt.fox.zhizhihuhu.util.LogUtils;
  */
 public class GanhuoFgPresenter extends BasePresentter<GanHuoFGViewInterface> {
 
-    private final static String TAG = "GanhuoFgPresenter";
 
     private Context mContext;
     private GanHuoFGViewInterface ganhuoFgView;
@@ -40,7 +39,6 @@ public class GanhuoFgPresenter extends BasePresentter<GanHuoFGViewInterface> {
     }
 
     public void getGankData() {
-        LogUtils.d(TAG, "getGankData()");
         ganhuoFgView = getView();
         if(ganhuoFgView != null) {
             mRecyclerView = ganhuoFgView.getRecyclerView();
@@ -58,6 +56,7 @@ public class GanhuoFgPresenter extends BasePresentter<GanHuoFGViewInterface> {
                             int position = results.indexOf(gankmeizhi);
                             gankmeizhi.setDesc( gankmeizhi.getDesc() + " " +
                                     video.getResults().get(position).getDesc());
+                            gankmeizhi.setContentUrl(video.getResults().get(position).getUrl());
                         }
                         return meiZi;
                     }
@@ -67,13 +66,11 @@ public class GanhuoFgPresenter extends BasePresentter<GanHuoFGViewInterface> {
                 .subscribe(new Action1<MeiZi>() {
                     @Override
                     public void call(MeiZi meiZi) {
-                        LogUtils.d(TAG, meiZi.toString());
                         displayMeizi(mContext, meiZi.getResults(), ganhuoFgView, mRecyclerView);
                     }
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
-                        LogUtils.d(TAG, throwable.getMessage());
                         throwable.printStackTrace();
                         Toast.makeText(mContext, R.string.net_wrong, Toast.LENGTH_SHORT).show();
                     }
@@ -92,6 +89,7 @@ public class GanhuoFgPresenter extends BasePresentter<GanHuoFGViewInterface> {
             mRecyclerView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
         }
+        ganhuoFgView.setDataRefresh(false);
 
     }
 

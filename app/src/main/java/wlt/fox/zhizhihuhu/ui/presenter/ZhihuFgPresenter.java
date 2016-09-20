@@ -11,6 +11,7 @@ import wlt.fox.zhizhihuhu.bean.zhihu.LatestNews;
 import wlt.fox.zhizhihuhu.ui.adapter.ZhihuListAdapter;
 import wlt.fox.zhizhihuhu.ui.base.BasePresentter;
 import wlt.fox.zhizhihuhu.ui.viewinterface.ZhiHuFGViewInterface;
+import wlt.fox.zhizhihuhu.util.LogUtils;
 
 /**
  * Created by wlt on 2016/9/18.
@@ -70,7 +71,8 @@ public class ZhihuFgPresenter extends BasePresentter<ZhiHuFGViewInterface> {
             mRecyclerView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
         }
-        zhiHuRBView.setRefresh(false);
+        LogUtils.d("wan", "知乎加载完成，关闭下拉刷新");
+        zhiHuRBView.setDataRefresh(false);
         time = latestNews.getDate();
     }
 }

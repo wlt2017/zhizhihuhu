@@ -3,12 +3,9 @@ package wlt.fox.zhizhihuhu.ui.fragment;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import wlt.fox.zhizhihuhu.R;
 import wlt.fox.zhizhihuhu.ui.base.MVPBaseFragment;
 import wlt.fox.zhizhihuhu.ui.presenter.GanhuoFgPresenter;
@@ -33,18 +30,33 @@ public class GanHuoFragment
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_gank,container,false);
-        ButterKnife.bind(this, rootView);
+    protected int createViewLayoutId() {
+        return R.layout.fragment_gank;
+    }
+
+
+    @Override
+    protected void initView(View rootView) {
         mGridLayoutManager = new GridLayoutManager(getContext(), 2);
         content_list.setLayoutManager(mGridLayoutManager);
-        return rootView;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        setDataRefresh(true);
         mPresenter.getGankData();
+    }
+
+    @Override
+    public void requestDataRefresh() {
+        super.requestDataRefresh();
+        mPresenter.getGankData();
+    }
+
+    @Override
+    public void setDataRefresh(Boolean refresh) {
+        setRefresh(refresh);
     }
 
     @Override

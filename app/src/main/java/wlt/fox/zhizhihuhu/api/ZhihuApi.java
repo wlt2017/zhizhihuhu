@@ -1,8 +1,10 @@
 package wlt.fox.zhizhihuhu.api;
 
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import rx.Observable;
 import wlt.fox.zhizhihuhu.bean.zhihu.LatestNews;
+import wlt.fox.zhizhihuhu.bean.zhihu.NewDetail;
 
 /**
  * Created by wlt on 2016/9/18.
@@ -16,4 +18,7 @@ public interface ZhihuApi {
     @GET("news/latest")
     Observable<LatestNews> getLatestNews();
 
+    //http://news-at.zhihu.com/api/4/news/8811992
+    @GET("news/{id}")
+    Observable<NewDetail> getDetailNews(@Path("id") String id);
 }

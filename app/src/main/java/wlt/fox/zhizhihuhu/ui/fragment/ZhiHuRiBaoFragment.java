@@ -1,16 +1,11 @@
 package wlt.fox.zhizhihuhu.ui.fragment;
 
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import wlt.fox.zhizhihuhu.R;
 import wlt.fox.zhizhihuhu.ui.base.MVPBaseFragment;
 import wlt.fox.zhizhihuhu.ui.presenter.ZhihuFgPresenter;
@@ -34,8 +29,11 @@ public class ZhiHuRiBaoFragment
     @BindView(R.id.content_recycler_view)
     RecyclerView content_recycler_view;
 
-    @BindView(R.id.swipe_refresh_layout)
-    SwipeRefreshLayout swipe_refresh_layout;
+    @Override
+    protected void initView(View rootView) {
+        mLayoutManager = new LinearLayoutManager(getContext());
+        content_recycler_view.setLayoutManager(mLayoutManager);
+    }
 
     @Override
     protected ZhihuFgPresenter createPresenter() {
@@ -43,54 +41,28 @@ public class ZhiHuRiBaoFragment
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_zhihuribao,container,false);
-        ButterKnife.bind(this, rootView);
-        setUpSwipeRefresh();
-        mLayoutManager = new LinearLayoutManager(getContext());
-        content_recycler_view.setLayoutManager(mLayoutManager);
-        return rootView;
+    protected int createViewLayoutId() {
+        return R.layout.fragment_zhihuribao;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        setRefresh(true);
+        setDataRefresh(true);
         mPresenter.getLatestNews();
-
     }
 
-    private void setUpSwipeRefresh() {
-        swipe_refresh_layout.setColorSchemeColors(
-                R.color.refresh_progress_1,
-                R.color.refresh_progress_2,
-                R.color.refresh_progress_3);
-        swipe_refresh_layout.setProgressViewOffset(false, 0, (int) TypedValue
-                .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources()
-                        .getDisplayMetrics()));
-        swipe_refresh_layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                mIsRequestDataRefresh = true;
-                setRefresh(true);
-                mPresenter.getLatestNews();
-            }
-        });
-    }
-
+    //用户下拉刷新回调
     @Override
-    public void setRefresh(boolean requestDataRefresh) {
-        if( !requestDataRefresh ) {
-            mIsRequestDataRefresh = false;
-            swipe_refresh_layout.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    swipe_refresh_layout.setRefreshing(false);
-                }
-            }, 1000);
-        } else {
-            swipe_refresh_layout.setRefreshing(true);
-        }
+    public void requestDataRefresh() {
+        super.requestDataRefresh();
+        mPresenter.getLatestNews();
+    }
+
+    //刷新，或者关闭刷新
+    @Override
+    public void setDataRefresh(Boolean refresh) {
+        setRefresh(refresh);
     }
 
     @Override

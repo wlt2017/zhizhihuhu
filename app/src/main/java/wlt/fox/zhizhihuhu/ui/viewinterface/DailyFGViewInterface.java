@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
  * E-mail : autumnsassou@163.com
  */
 public interface DailyFGViewInterface {
+    void setDataRefresh(Boolean refresh);
     RecyclerView getRecyclerView();
     LinearLayoutManager getLayoutManager();
 }

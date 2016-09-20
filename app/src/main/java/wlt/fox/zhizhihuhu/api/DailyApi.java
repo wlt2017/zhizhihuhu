@@ -14,7 +14,7 @@ public interface DailyApi {
     //http://app3.qdaily.com/app3/
 
     //http://app3.qdaily.com/app3/homes/index/0.json
-    @GET("homes/index/num.json")
+    @GET("homes/index/{num}.json")
     Observable<DailyBean> getDailyTimeLine(@Path("num") String num);
 
 }
