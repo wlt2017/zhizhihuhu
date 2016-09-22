@@ -9,8 +9,10 @@
 
 #尊重原创
 >* 前段时间一直在学习MVP、RxJava、Retrofit，刚好看到简书上的一篇文章：[实践！业余时间做的一款阅读类App （MVP + RxJava + Retrofit）](http://www.jianshu.com/p/be0f4a4863ae?utm_campaign=haruki&utm_content=note&utm_medium=reader_share&utm_source=qq)。于是就下载了源码，自己实现了一遍，并加了些新功能。
+
 ####原作者
 * GitHub: [Werb](https://github.com/Werb)
+
 ####原项目的链接
 *  [https://github.com/Werb/GankWithZhihu](https://github.com/Werb/GankWithZhihu)
 ####再次感谢[Werb](https://github.com/Werb)
