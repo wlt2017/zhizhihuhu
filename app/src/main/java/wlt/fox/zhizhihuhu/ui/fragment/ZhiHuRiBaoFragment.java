@@ -49,6 +49,7 @@ public class ZhiHuRiBaoFragment
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setDataRefresh(true);
+        mPresenter.init();
         mPresenter.getLatestNews();
     }
 
@@ -57,6 +58,11 @@ public class ZhiHuRiBaoFragment
     public void requestDataRefresh() {
         super.requestDataRefresh();
         mPresenter.getLatestNews();
+    }
+
+    @Override
+    protected void rePaintView() {
+        mPresenter.reView();
     }
 
     //刷新，或者关闭刷新

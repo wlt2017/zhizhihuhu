@@ -21,4 +21,8 @@ public interface ZhihuApi {
     //http://news-at.zhihu.com/api/4/news/8811992
     @GET("news/{id}")
     Observable<NewDetail> getDetailNews(@Path("id") String id);
+
+    //http://news-at.zhihu.com/api/4/news/before/20160921
+    @GET("news/before/{time}")
+    Observable<LatestNews> getBeforeNews(@Path("time") String time);
 }

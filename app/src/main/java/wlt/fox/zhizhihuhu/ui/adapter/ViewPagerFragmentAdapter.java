@@ -7,6 +7,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.List;
 
+import wlt.fox.zhizhihuhu.MyApp;
+import wlt.fox.zhizhihuhu.R;
 import wlt.fox.zhizhihuhu.ui.base.MVPBaseFragment;
 
 /**
@@ -44,11 +46,11 @@ public class ViewPagerFragmentAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return "知乎日报";
+                return MyApp.mContext.getString(R.string.page1);
             case 1:
-                return "只知呼呼";
+                return MyApp.mContext.getString(R.string.page2);
             case 2:
-                return "知之乎乎";
+                return MyApp.mContext.getString(R.string.page3);
         }
         return null;
     }

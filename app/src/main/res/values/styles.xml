@@ -18,7 +18,7 @@
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:paddingLeft">20dp</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/normalTextColor</item>
         <item name="android:textSize">12sp</item>
     </style>
 
@@ -26,6 +26,26 @@
     <style name="expandedTitle">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">15sp</item>
+    </style>
+
+    <!--TabLayout-->
+    <style name="MyTabLayoutTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- toolbar标题样式 -->
+    <style name="ToolbarTitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">4sp</item>
+        <item name="android:textColor">#ffffffff</item>
+    </style>
+
+    <!--侧滑菜单最下面两个按钮-->
+    <style name="DrawlayoutTextview">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/BlackWhiteColor</item>
     </style>
 
 </resources>

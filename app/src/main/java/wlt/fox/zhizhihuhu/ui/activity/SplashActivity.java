@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -16,10 +16,10 @@ import wlt.fox.zhizhihuhu.ui.base.MVPBaseActivity;
 public class SplashActivity extends MVPBaseActivity {
 
     //动画持续时间,单位ms
-    private static final int AnimTime = 1000;
+    private static final int AnimTime = 2000;
 
-    @BindView(R.id.tv)
-    TextView tv;
+    @BindView(R.id.iv)
+    ImageView iv;
 
     private Handler mHandler;
 
@@ -43,6 +43,7 @@ public class SplashActivity extends MVPBaseActivity {
                         Animation.RELATIVE_TO_SELF,0.5f,
                         Animation.RELATIVE_TO_SELF,0.5f);
         scaleAnimation.setDuration(AnimTime);
+        scaleAnimation.setFillAfter(true);
         scaleAnimation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
@@ -59,7 +60,7 @@ public class SplashActivity extends MVPBaseActivity {
 
             }
         });
-        tv.startAnimation(scaleAnimation);
+        iv.startAnimation(scaleAnimation);
     }
 
     private void goToMainActivity() {

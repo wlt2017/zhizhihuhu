@@ -15,13 +15,16 @@ import android.widget.ProgressBar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import wlt.fox.zhizhihuhu.R;
+import wlt.fox.zhizhihuhu.ui.base.BasePresentter;
+import wlt.fox.zhizhihuhu.ui.base.MVPBaseActivity;
 import wlt.fox.zhizhihuhu.util.LogUtils;
 
 /**
  * Created by wlt on 2016/9/20.
  * E-mail : autumnsassou@163.com
  */
-public class WebActivity extends Activity {
+public class WebActivity
+        extends MVPBaseActivity {
 
     private Activity activity;
 
@@ -42,6 +45,11 @@ public class WebActivity extends Activity {
         activity = this;
         parseIntent();
         setWebView(gank_url);
+    }
+
+    @Override
+    protected BasePresentter createPresenter() {
+        return null;
     }
 
     public void setWebView(String url){

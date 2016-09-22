@@ -2,10 +2,13 @@ package wlt.fox.zhizhihuhu.ui.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -17,6 +20,7 @@ import butterknife.ButterKnife;
 import wlt.fox.zhizhihuhu.R;
 import wlt.fox.zhizhihuhu.bean.zhihu.LatestNews;
 import wlt.fox.zhizhihuhu.ui.activity.ZhihuWebActivity;
+import wlt.fox.zhizhihuhu.util.ScreenUtil;
 import wlt.fox.zhizhihuhu.view.TopStoriesViewPager;
 
 /**
@@ -52,6 +56,8 @@ public class ZhihuListAdapter
         if (mLatestNews.getTop_stories() != null) {
             if (position == 0) {
                 return TYPE_TOP;
+            }else if(position + 1 == getItemCount()) {
+                return TYPE_FOOTER;
             }else {
                 return position;
             }
@@ -66,7 +72,10 @@ public class ZhihuListAdapter
             View rootView = View.inflate(
                     parent.getContext(), R.layout.item_zhihu_top_stories, null);
             return new TopStroiedViewHolder(rootView);
-        }else {
+        } else if(viewType == TYPE_FOOTER) {
+            View view = View.inflate(parent.getContext(), R.layout.item_footer, null);
+            return new FooterViewHolder(view);
+        } else {
             View rootView = View.inflate(
                     parent.getContext(), R.layout.item_zhihu_stories, null);
             return  new StoriesViewHolder(rootView);
@@ -81,6 +90,9 @@ public class ZhihuListAdapter
         } else if (holder instanceof  TopStroiedViewHolder) {
             TopStroiedViewHolder topStroiedViewHolder = (TopStroiedViewHolder) holder;
             topStroiedViewHolder.bindItem(mLatestNews.getTop_stories());
+        } else if(holder instanceof FooterViewHolder) {
+            FooterViewHolder footerViewHolder = (FooterViewHolder) holder;
+            footerViewHolder.bindItem();
         }
     }
 
@@ -115,7 +127,7 @@ public class ZhihuListAdapter
      */
     class StoriesViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.card_stories)
+        @BindView(R.id.card)
         CardView card_stories;
         @BindView(R.id.tv_stories_title)
         TextView tv_stories_title;
@@ -125,9 +137,15 @@ public class ZhihuListAdapter
         public StoriesViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            ScreenUtil screenUtil = ScreenUtil.instance(mContext);
+            int screenWidth = screenUtil.getScreenWidth();
+            card_stories.setLayoutParams(
+                    new LinearLayout.LayoutParams(screenWidth, LinearLayout.LayoutParams.WRAP_CONTENT));
+
         }
 
         public void bindItem(final LatestNews.Stories stories) {
+            ChangeCardViewColor.setCardViewBackgroundColor(card_stories);
             if(stories.getTitle() != null) {
                 tv_stories_title.setText(stories.getTitle());
             }
@@ -143,10 +161,27 @@ public class ZhihuListAdapter
         }
     }
 
+    class FooterViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.tv_load_prompt)
+        TextView tv_load_prompt;
+        @BindView(R.id.progress)
+        ProgressBar progress;
+        public FooterViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+            LinearLayoutCompat.LayoutParams params =
+                    new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ScreenUtil.instance(mContext).dip2px(40));
+            itemView.setLayoutParams(params);
+        }
+        private void bindItem() {
+
+        }
+    }
+
     // TODO: 2016/9/19
     @Override
     public int getItemCount() {
-        return mLatestNews.getStories().size()+1;
+        return mLatestNews.getStories().size()+2;
     }
 
     // change recycler state

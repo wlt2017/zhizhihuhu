@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/card_layout"
+        android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -15,7 +15,8 @@
         card_view:cardElevation="3dp"
         card_view:cardPreventCornerOverlap="true"
         card_view:cardUseCompatPadding="true"
-        card_view:contentPadding="8dp">
+        card_view:contentPadding="8dp"
+        card_view:cardBackgroundColor="@color/cardBackColor">
 
        <LinearLayout
            android:layout_width="match_parent"

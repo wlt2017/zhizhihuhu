@@ -55,6 +55,11 @@ public class DailyFragment
     }
 
     @Override
+    protected void rePaintView() {
+        mPresenter.reView();
+    }
+
+    @Override
     public void setDataRefresh(Boolean refresh) {
         setRefresh(refresh);
     }

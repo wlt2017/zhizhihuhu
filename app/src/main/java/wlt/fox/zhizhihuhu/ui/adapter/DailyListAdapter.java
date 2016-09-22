@@ -44,11 +44,24 @@ public class DailyListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public int getItemViewType(int position) {
-        if(position == 0) {
-            return TYPE_TOP;
-        } else if(position == 1) {
-            return TYPE_HEADLINE;
+        if(response.getBanners() != null) {//有banner
+            if (position == 0) {
+                return TYPE_TOP;
+            } else if(response.getHeadline().getPost() != null) {//有头条
+                if (position == 1) {
+                    return TYPE_HEADLINE;
+                } else {
+                    //有banner和头条，所以正文的position从2开始
+                    feed_position = 2;
+                    return position;
+                }
+            } else {
+                //有banner没头条
+                feed_position = 1;
+                return position;
+            }
         } else {
+            feed_position = 0;
             return position;
         }
     }
@@ -65,7 +78,7 @@ public class DailyListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     R.layout.item_daily_headline, null);
             return new HeadlineViewHolder(rootView);
         } else {
-            DailyBean.ResponseBean.FeedsBean feedsBean = response.getFeeds().get(viewType - 2);
+            DailyBean.ResponseBean.FeedsBean feedsBean = response.getFeeds().get(viewType - feed_position);
             switch (feedsBean.getType()) {
                 case 0: {
                     rootView = View.inflate(parent.getContext(),
@@ -119,7 +132,11 @@ public class DailyListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public int getItemCount() {
-        return response.getFeeds().size() + 2;
+        int count = 0;
+        if(response.getBanners() != null) count ++;
+        if (response.getFeeds() != null) count = count + response.getFeeds().size();
+        if(response.getHeadline().getPost() != null) count++;
+        return count;
     }
 
     class TopStoriesViewHolder extends RecyclerView.ViewHolder {
@@ -168,7 +185,7 @@ public class DailyListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         TextView tv_headline_2;
         @BindView(R.id.tv_headline_3)
         TextView tv_headline_3;
-        @BindView(R.id.card_headline)
+        @BindView(R.id.card)
         CardView card_headline;
 
         public HeadlineViewHolder(View itemView) {
@@ -177,6 +194,8 @@ public class DailyListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
 
         public void bindItem(final DailyBean.ResponseBean.HeadlineBean headline) {
+            ChangeCardViewColor.setCardViewBackgroundColor(card_headline);
+
             List<DailyBean.ResponseBean.HeadlineBean.ListBean> headLines = headline.getList();
             tv_headline_1.setText(headLines.get(0).getDescription());
             tv_headline_2.setText(headLines.get(1).getDescription());
@@ -203,7 +222,7 @@ public class DailyListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         ImageView iv_feed_0_type;
         @BindView(R.id.tv_Feed_0_type)
         TextView tv_Feed_0_type;
-        @BindView(R.id.card_layout)
+        @BindView(R.id.card)
         CardView card_layout;
 
         public Feed_0_ViewHolder(View rootView) {
@@ -212,6 +231,8 @@ public class DailyListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
 
         public void bindItem(final DailyBean.ResponseBean.FeedsBean feeds) {
+            ChangeCardViewColor.setCardViewBackgroundColor(card_layout);
+
             tv_feed_0_title.setText(feeds.getPost().getTitle());
             tv_feed_0_desc.setText(feeds.getPost().getDescription());
             tv_Feed_0_type.setText(feeds.getPost().getCategory().getTitle());
@@ -246,7 +267,7 @@ public class DailyListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         ImageView iv_feed_1_type_icon;
         @BindView(R.id.iv_feed_1_icon)
         ImageView iv_feed_1_icon;
-        @BindView(R.id.card_feed_1)
+        @BindView(R.id.card)
         CardView card_feed_1;
 
         public Feed_1_ViewHolder(View rootView) {
@@ -255,6 +276,8 @@ public class DailyListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
 
         public void bindItem(final DailyBean.ResponseBean.FeedsBean feeds) {
+            ChangeCardViewColor.setCardViewBackgroundColor(card_feed_1);
+
             tv_feed_1_title.setText(feeds.getPost().getTitle());
             tv_feed_1_type.setText(feeds.getPost().getCategory().getTitle());
             Glide.with(mContext).load(feeds.getPost().getCategory().getImage_lab()).centerCrop().into(iv_feed_1_type_icon);

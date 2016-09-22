@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6DB7B8</color>
-    <color name="colorPrimaryDark">#538D8C</color>
-    <color name="colorAccent">#EB2064</color>
+
+    <!--白天模式-->
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#1976D2</color>
+    <color name="colorAccent">#FF5252</color>
+
+    <color name="normalTextColor">#212121</color>
+    <color name="cardBackColor">#FFFFFFFF</color>
+    <color name="backColor">#FFF3F4F8</color>
+
+    <color name="BlackWhiteBackgroundColor">#F3F4F8</color>
+    <color name="BlackWhiteColor">@color/black</color>
 
     <!--Text-->
     <color name="textColor">#424242</color>
+
+    <!--TabLayout-->
+    <color name="TabTextColor">#FFFFFF</color>
+    <color name="TabSelectColor">#FAFAFA</color>
+    <color name="TabIndicatorColor">#FFFFFF</color>
 
     <!--Splash-->
     <color name="white">#FFFFFF</color>

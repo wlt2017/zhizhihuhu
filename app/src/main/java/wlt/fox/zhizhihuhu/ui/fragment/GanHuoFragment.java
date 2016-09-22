@@ -45,6 +45,7 @@ public class GanHuoFragment
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setDataRefresh(true);
+        mPresenter.init();
         mPresenter.getGankData();
     }
 
@@ -52,6 +53,11 @@ public class GanHuoFragment
     public void requestDataRefresh() {
         super.requestDataRefresh();
         mPresenter.getGankData();
+    }
+
+    @Override
+    protected void rePaintView() {
+        mPresenter.reView();
     }
 
     @Override

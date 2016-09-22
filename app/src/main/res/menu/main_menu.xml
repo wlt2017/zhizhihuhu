@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/mode"
+        android:title="夜间模式"
+        android:showAsAction="never"/>
+
+    <item android:id="@+id/about_me"
+        android:title="@string/about_me"
+        android:showAsAction="never"/>
+
+</menu>

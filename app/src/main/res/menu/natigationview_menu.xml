@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="主页">
+        <menu>
+            <item
+                android:id="@+id/zhihu"
+                android:icon="@drawable/zhihu"
+                android:title="@string/page1" />
+            <item
+                android:id="@+id/ganhuo"
+                android:icon="@drawable/ganhuo"
+                android:title="@string/page2" />
+            <item
+                android:id="@+id/haoqixin"
+                android:icon="@drawable/haoqixin"
+                android:title="@string/page3" />
+        </menu>
+    </item>
+
+
+    <item
+        android:id="@+id/yejian"
+        android:icon="@drawable/night"
+        android:title="@string/night" />
+
+</menu>

@@ -70,4 +70,9 @@ public class DailyFgPresenter extends BasePresentter<DailyFGViewInterface> {
         }
         dailyFgView.setDataRefresh(false);
     }
+
+    public void reView() {
+        adapter.notifyDataSetChanged();
+    }
+
 }

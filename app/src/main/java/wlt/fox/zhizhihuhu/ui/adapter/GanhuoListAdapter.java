@@ -55,7 +55,7 @@ public class GanhuoListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     class MeiziViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.card_meizhi)
+        @BindView(R.id.card)
         CardView card_meizhi;
         @BindView(R.id.iv_meizhi)
         ImageView iv_meizhi;
@@ -68,6 +68,7 @@ public class GanhuoListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
 
         public void bindItem(final MeiZi.Results meizi) {
+            ChangeCardViewColor.setCardViewBackgroundColor(card_meizhi);
             tv_meizhi_title.setText(meizi.getDesc());
             Glide.with(mContext).load(meizi.getUrl()).centerCrop().into(iv_meizhi);
 //            Glide.with(mContext).load(meizi.getUrl()).asBitmap().into(new SimpleTarget<Bitmap>() {

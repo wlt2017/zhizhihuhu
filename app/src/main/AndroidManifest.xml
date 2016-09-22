@@ -23,6 +23,7 @@
         <activity android:name=".ui.activity.ZhihuWebActivity"></activity>
         <activity android:name=".ui.activity.PictureActivity"></activity>
         <activity android:name=".ui.activity.WebActivity"></activity>
+        <activity android:name=".ui.activity.AboutMeActivity"></activity>
     </application>
 
 </manifest>
